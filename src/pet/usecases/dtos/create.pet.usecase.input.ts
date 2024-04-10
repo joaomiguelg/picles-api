@@ -1,18 +1,12 @@
-export default class CreatePetUseCaseInput{
-
+export default class CreatePetUseCaseInput {
     name: string;
     type: string;
-    size:string;
+    size: string;
     gender: string;
     bio: string;
-    photo: string;
-    createdAt: Date;
-    updatedAt: Date;
-
+  
     constructor(data: Partial<CreatePetUseCaseInput>) {
-
-        Object.assign(this, data);
-
+      Object.assign(this, data);
     }
-
-}
+  }
+  

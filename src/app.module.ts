@@ -5,7 +5,6 @@ import { ShelterModule } from './shelter/shelter.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PetModule } from './pet/pet.module';
-import { PetController} from './pet/pet.controller';
 
 @Module({
   imports: [
@@ -16,8 +15,11 @@ import { PetController} from './pet/pet.controller';
       useFactory: async (config: ConfigService) => ({
         uri: config.get<string>('DB_CONNECTION_STRING'),
       }),
-    }), ShelterModule, PetModule,],
-  controllers: [AppController, PetController],
+    }),
+    ShelterModule,
+    PetModule,
+  ],
+  controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}

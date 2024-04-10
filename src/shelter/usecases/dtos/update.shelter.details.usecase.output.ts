@@ -1,14 +1,12 @@
 export default class UpdateShelterDetailsUseCaseOutput {
+  name: string;
+  whatsApp: string;
+  email: string;
+  phone: string;
+  createdAt: Date;
+  updatedAt: Date;
 
-    name: string;
-    whatsapp: string;
-    email: string;
-    phone: string;
-    createdAt: Date;
-    updatedAt: Date;
-
-    constructor(data: Partial<UpdateShelterDetailsUseCaseOutput>) {
-        Object.assign(this,data);
-    }
-
+  constructor(data: Partial<UpdateShelterDetailsUseCaseOutput>) {
+    Object.assign(this, data);
+  }
 }

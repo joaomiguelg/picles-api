@@ -1,6 +1,6 @@
-import { Shelter } from "../schemas/shelter.schema";
+import { Shelter } from '../schemas/shelter.schema';
 
-export default interface IShelterRepository{
-    get(): Promise<Shelter>;
-    update(data: Partial<Shelter>): Promise<void>
+export default interface IShelterRepository {
+  get(): Promise<Shelter>;
+  update(data: Partial<Shelter>): Promise<void>;
 }
