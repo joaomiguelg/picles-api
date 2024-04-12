@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, Post, Put, UploadedFile, UseInterceptors, Patch } from '@nestjs/common';
+import { BadRequestException, Body, Controller, Delete, Get, Inject, Param, Post, Put, UploadedFile, UseInterceptors, Patch, Query } from '@nestjs/common';
 import CreatePetControllerInput from './dtos/create.pet.controller.input';
 import PetTokens from './pet.tokens';
 import { IUseCase } from 'src/domain/iusecase.interface';
@@ -15,6 +15,7 @@ import multerConfig from 'src/config/multer.config';
 import { FileInterceptor } from '@nestjs/platform-express';
 import UpdatePetPhotoByIdUseCaseInput from './usecases/dtos/update.photo.by.id.usecase.input';
 import UpdatePetPhotoByIdUseCaseOutput from './usecases/dtos/update.photo.by.id.usecase.output';
+import GetPetsUseCaseInput from './usecases/dtos/get.pet.usecase.input';
 
 @Controller('pet')
 export class PetController {
@@ -38,6 +39,25 @@ export class PetController {
     async createPet(@Body() input: CreatePetControllerInput): Promise<CreatePetUseCaseOutput> {
         const useCaseInput = new CreatePetUseCaseInput({ ...input })
         return await this.createPetUseCase.run(useCaseInput)
+    }
+
+    @Get()
+    async getPets(
+        @Query('type') type?: string,
+        @Query('size') size?: string,
+        @Query('gender') gender?: string,
+        @Query('page') page?: string,
+        @Query('itemsPerPage') itemsPerPage?: string
+    ){
+        const FIRST_PAGE = 1
+        const DEFAULT_ITENS_PER_PAGE = 10
+        const useCaseInput = new GetPetsUseCaseInput({
+            type: !!type ? type : null,
+            size: !!size ? size : null,
+            gender: !!gender? gender : null,
+            page: !!page ? parseInt(page) : FIRST_PAGE,
+            itemsPerPage: !!itemsPerPage ? parseInt(itemsPerPage) : DEFAULT_ITENS_PER_PAGE
+        })
     }
 
     @Get(':id')
