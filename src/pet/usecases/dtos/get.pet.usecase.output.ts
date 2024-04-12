@@ -2,7 +2,7 @@ import PetResponse from "src/pet/dtos/pet.response";
 
 export default class GetPetsUseCaseOutput {
     currentPage: number;
-    totalPage: number;
+    totalPages: number;
     items: PetResponse[];
 
     constructor(data: Partial<GetPetsUseCaseOutput>) {

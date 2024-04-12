@@ -4,6 +4,7 @@ export default class PetTokens {
     static updatePetByIdUseCase = 'updatePetByIdUseCase';
     static deletePetByIdUseCase = 'deletePetByIdUseCase';
     static updatePetPhotoUseCase = 'updatePetPhotoUseCase';
+    static getPetsUseCase = 'getPetsUseCase';
     static petRepository = 'petRepository';
   }
   
