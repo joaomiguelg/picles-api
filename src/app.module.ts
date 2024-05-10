@@ -2,18 +2,15 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ShelterModule } from './shelter/shelter.module';
-import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { PetModule } from './pet/pet.module';
 import { MulterModule } from '@nestjs/platform-express';
+import { MongooseModule } from '@nestjs/mongoose';
+
 
 @Module({
   imports: [
     ConfigModule.forRoot(),
-    // ServeStaticModule.forRoot({
-    //   rootPath: join(__dirname, '..','../public'),
-    //   serveRoot:'/public',
-    // }),
     MulterModule,
     MongooseModule.forRootAsync({
       imports: [ConfigModule],
